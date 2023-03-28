@@ -1,0 +1,32 @@
+h2 {
+    color: red;
+    font-size: 40px;
+}
+
+body {
+    background-color: rgb(168, 167, 166);
+    font-size: 16px;
+}
+
+#paragrafo-outroh2 {
+    background-color: green;
+    font-size: 3em;
+}
+
+#outroh2 {
+    color: orange;
+}
+
+.listas {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    line-height: 40px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+p {
+    font-family: fantasy;
+    font-weight: 600px;
+}
