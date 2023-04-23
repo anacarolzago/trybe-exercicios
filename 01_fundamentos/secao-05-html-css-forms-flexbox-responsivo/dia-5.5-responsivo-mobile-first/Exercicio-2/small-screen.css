@@ -1,0 +1,45 @@
+/*
+ * @see http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * apply a natural box layout model to all elements, but allowing components to change
+ */
+ 
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {}
+
+article {}
+
+h1 {}
+
+h2 {}
+
+img {
+    max-width: 100%;
+}
+
+main {}
+
+section {}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    font-size: .8em;
+}
+
+/* max-width: 600px: Telas de celular. (Mobile devices)
+min-width: 600px: iPads, Tablets
+min-width: 768px: Telas menores, laptops
+min-width: 992px: Desktops
+min-width: 1200px — Telas grandes, screens e TV. */
+
