@@ -95,13 +95,67 @@ const clients = [{
 ];
 
 const findPersonByName = (name) => {
-    // seu código aqui
+    let person;
+
+    try {
+        for (let index = 0; index < clients.length; index += 1) {
+            if (clients[index].name === name) {
+                person = clients[index];
+            };
+        };
+        if (!person) {
+            throw new Error("Pessoa não encontrada, tente novamente");
+        }
+        const receiverName = `Destinatário: ${person.name}`;
+        const fullAddress = `Endereço: ${person.address.street}, ${person.address.number}, ${person.address.neighborhood}, ${person.address.city} - ${person.address.state}`;
+        const cep = `CEP: ${person.address.cep}`;
+        return `${receiverName}. ${fullAddress}, ${cep}`;
+
+    } catch (error) {
+        throw error.message;
+    };
 };
 
+console.log(findPersonByName('Ana Santos')); // Fluxo completo
+console.log(findPersonByName('Ana Silva')); // Fluxo de exceção 
+
 const findPersonByPosition = (position) => {
-    // seu código aqui
+    try {
+        const person = clients[position];
+        if (!person) {
+            throw new Error('Posição inválida, tente novamente');
+        }
+        return `Cliente: ${person.name}. email: ${person.email}`;
+
+    } catch (error) {
+        return error.message;
+    };
+};
+
+console.log(findPersonByPosition(5)); // Fluxo completo
+console.log(findPersonByPosition(10)); // Fluxo de exceção
+
+const arrayValidation = (array) => {
+    if (array.length === 0) {
+        throw new Error('Ops, nenhuma pessoa mora nesse estado, tente outro');
+    }
 };
 
 const findPeopleByState = (state) => {
-    // seu código aqui
+    try {
+        let people = [];
+        for (let index = 0; index < clients.length; index += 1) {
+            if (clients[index].address.state === state) {
+                people.push(clients[index].name);
+            }
+        }
+        arrayValidation(people);
+        return people;
+
+    } catch (error) {
+        return error.message;
+    }
 };
+
+console.log(findPeopleByState('SP')); // Fluxo completo
+console.log(findPeopleByState('AC')); // Fluxo de exceção
