@@ -21,7 +21,7 @@ describe('The function soma()', () => {
     test('adds 0 + -10 to be equal -10', () => {
         expect(soma(0, -10)).toBe(-10);
     });
-})
+});
 
 // Função summationOf - recebe um número e retorna a somatória. Ex.:
 // summationOf(1) --> 1
