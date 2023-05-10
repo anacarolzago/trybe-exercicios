@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Project Pixels Art</title>
 </head>
+
 <body>
-    
+
+    <header>
+        <h1 id="title">Paleta de Cores</h1>
+    </header>
+
+    <main>
+        <section>
+            <ul id="color-palette">
+                <li class="color selected"></li>
+                <li class="color"></li>
+                <li class="color"></li>
+                <li class="color"></li>
+            </ul>
+        </section>
+
+        <section>
+            <button id="button-random-color" class="button">Cores aleatórias</button>
+            <button id="clear-board">Limpar</button>
+        </section>
+
+        <div id="parent-node">
+            <input type="number" id="board-size" placeholder="Escreva um número" min="1" max="50">
+            <button id="generate-board">VQV</button>
+        </div>
+
+        <section>
+            <div id="pixel-board"></div>
+        </section>
+    </main>
+    <script type="text/javascript" src="script.js"></script>
+
 </body>
+
 </html>
