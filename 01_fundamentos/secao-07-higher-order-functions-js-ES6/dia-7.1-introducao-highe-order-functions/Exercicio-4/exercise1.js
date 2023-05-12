@@ -1,7 +1,6 @@
 // Organizando uma biblioteca
 
 // Estes exercícios praticam os conceitos de Higher Order Functions associados a outros temas de fundamentos já vistos, como arrow functions, template literals e objetos. Essa mistura de conceitos é muito importante para o seu aprendizado, então use tudo o que sabe para resolver os exercícios!
-
 // Utilize o seguinte código como template para realizar os exercícios:
 
 const books = [{
@@ -69,27 +68,27 @@ const books = [{
 // Adicione o código do exercício aqui:
 
 // Encontre o nome da primeira pessoa autora do livro nascida no ano de 1947.
-// De olho na dica 👀: use a função find.
-
 const expectedResult = 'Stephen King';
 const authorBornIn1947 = () => {
-    // escreva aqui o seu código
-}
+    return books.find((book) => book.author.birthYear === 1947).author.name;
+};
 
 // Retorne o nome do livro com menor número de caracteres (menor nome).
-// De olho na dica 👀: use a função forEach.
-
 const expectedResult = 'Duna';
 const smallerName = () => {
     let nameBook;
-    // escreva aqui o seu código
+  
+    books.forEach((book) => {
+        if(!nameBook || book.name.length < nameBook) {
+            nameBook = book.name
+        }
+    });
 
     // Variável nameBook que receberá o valor do menor nome;
     return nameBook;
 }
 
 // Encontre o primeiro livro cujo nome possua 26 caracteres.
-
 const expectedResult = {
     author: {
         birthYear: 1948,
@@ -102,29 +101,30 @@ const expectedResult = {
 };
 
 const getNamedBook = () => {
-    // escreva seu código aqui
-}
+    return books.find((book) => book.name.length === 26);
+  }
 
 //   Faça uma função que retorne true se todas as pessoas autoras tiverem nascido no século XX, ou false, caso contrário.
-
 const expectedResult = false;
 
 function everyoneWasBornOnSecXX() {
-    // escreva seu código aqui
+    return books.every((book) => (book.author.birthYear >= 1901 && book.author.birthYear <= 2000))
+    
 }
 
 // Faça uma função que retorne true, se algum livro foi lançado na década de 80, e false, caso contrário.
-
 const expectedResult = true;
 
 const someBookWasReleaseOnThe80s = () => {
-    // escreva seu código aqui
+    return books.some((book) => book.releaseYear >= 1980 && book.releaseYear <= 1989)
 }
 
 // Faça uma função que retorne true, caso nenhuma pessoa autora tenha nascido no mesmo ano, e false, caso contrário.
-
 const expectedResult = false;
 
 const authorUnique = () => {
-    // escreva seu código aqui
-}
+    return books.every((book) => 
+        !books.some((bookSome) =>
+            (bookSome.author.birthYear === book.author.birthYear)
+            && (bookSome.author.name !== book.author.name)));
+};
