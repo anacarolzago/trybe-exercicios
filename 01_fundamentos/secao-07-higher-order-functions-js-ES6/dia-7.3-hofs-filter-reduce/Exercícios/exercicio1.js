@@ -110,5 +110,8 @@ const countries = [
 
 const expectedResult = 120797034;
 const getPopulation = () => {
- // retorne o seu código aqui
-}
+  const populacao = countries.population.reduce((acc, cur) => acc + cur, 0);
+  return populacao
+};
+
+console.log(getPopulation());
