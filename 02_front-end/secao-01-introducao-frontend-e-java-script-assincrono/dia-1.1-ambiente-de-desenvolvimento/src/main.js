@@ -1,1 +1,3 @@
-console.log('Oi');
+import { nanoid } from "nanoid";
+
+console.log(nanoid());
