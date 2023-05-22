@@ -1,0 +1,76 @@
+:root {
+    --corTrybe1: #E1F2D5;
+    --corTrybe2: #A0F046;
+    --corTrybe3: #1DB702;
+    --corTrybe4: #034422;
+    --redTrybe: #B51D49;
+}
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--corTrybe1);
+    color: var(--corTrybe4);
+}
+
+main {
+    margin: auto;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    background-color: var(--corTrybe3);
+    color: var(--corTrybe1);
+    max-width: 50%;
+    margin: 20px auto;
+    margin-bottom: 50px;
+    padding: 20px 5px;
+    border-radius: 10px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    font-size: 25px;
+}
+
+img {
+    margin-left: 200px;
+    margin-bottom: 40px;
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    border-radius: 25px;
+}
+
+.student-info {
+    display: inline-block;
+    text-align: center;
+}
+
+.result {
+    max-width: 30%;
+    margin: auto;
+    margin-top: 70px;
+}
+
+.aprovado {
+    color: var(--corTrybe1);
+    background-color: var(--corTrybe3);
+    font-size: 40px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.reprovado {
+    color: var(--corTrybe1);
+    background-color: var(--redTrybe);
+    font-size: 40px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+hr {
+    border: 1px solid var(--corTrybe4);
+}
