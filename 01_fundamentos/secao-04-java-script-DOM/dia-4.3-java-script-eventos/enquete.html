@@ -1,0 +1,66 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <title>Teste</title>
+    <script>
+        window.onload = function () {
+            let botao = document.getElementById('btNao');
+            let w = Number(botao.offsetWidth);
+            let h = Number(botao.offsetHeight);
+            let step = 20;
+
+            window.addEventListener('mousemove', function (event) {
+                let x = botao.offsetLeft;
+                let y = botao.offsetTop;
+                if (event.offsetX >= x - step && event.offsetX < x + w &&
+                    event.offsetY >= y - step && event.offsetY < y + h + step) {
+                    botao.style.left = (botao.offsetLeft + step) + 'px';
+                }
+                if (event.offsetX > x + w && event.offsetX <= x + w + step &&
+                    event.offsetY >= y - step && event.offsetY < y + h + step) {
+                    botao.style.left = (botao.offsetLeft - step) + 'px';
+                }
+                if (event.offsetY >= y - step && event.offsetY < y + h &&
+                    event.offsetX >= x - step && event.offsetX < x + w + step) {
+                    botao.style.top = (botao.offsetTop + step) + 'px';
+                }
+                if (event.offsetY > y + h && event.offsetY <= y + h + step &&
+                    event.offsetX >= x - step && event.offsetX < x + w + step) {
+                    botao.style.top = (botao.offsetTop - step) + 'px';
+                }
+            });
+
+            let btSim = document.querySelector('#btSim');
+            btSim.addEventListener('click', function () {
+                btSim.remove();
+                btNao.remove();
+                let obrigado = document.createElement('h3');
+                obrigado.innerHTML = 'Obrigado pela sua avaliação!';
+                document.body.appendChild(obrigado);
+            });
+        };
+    </script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        button {
+            font-size: 1.6em;
+            padding: 5px 15px;
+        }
+
+        #btNao {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Você gostou da aula de hoje?</h1>
+    <button id="btSim">Sim</button>&nbsp;
+    <button id="btNao">Não</button>
+</body>
+
+</html>
