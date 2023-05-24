@@ -1,12 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mário Kart da Trybe</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+    <audio id="audioWinner" src="./files/marioWinner.mp3"></audio>
 </head>
+
 <body>
-    <h1>OIRRERERERERER</h1>
+    <header>
+        <h1><img src="./files/corridaMaravilhosa.png" alt="Corrida maravilhosa"></h1>
+    </header>
+
+    <div class="selectPlayer">
+        <p>SELECT YOUR PLAYER:</p>
+        <p class="small">Clique na interrogação [?], depois na personagem.</p>
+    </div>
+
+    <section id="players" class="alternatives">
+        <img src="files/mario.png" alt="Mario" class="playersImages">
+        <span id="mario-score">0</span>
+
+        <img src="files/luigi.png" alt="Luigi" class="playersImages">
+        <span id="luigi-score">0</span>
+
+        <img src="files/peach.png" alt="Peach" class="playersImages">
+        <span id="peach-score">0</span>
+
+        <img src="files/yoshi.png" alt="Yoshi" class="playersImages">
+        <span id="yoshi-score">0</span>
+    </section>
+
+    <button id="start-race-btn" class="btn-go">VAI!</button>
+    <button id="reset-race-btn" class="btn-reset">RESET</button>
+
+    <section class="car-section">
+        <div id="player1" class="car"></div>
+        <div id="player2" class="car"></div>
+    </section>
 </body>
+<script src="./script.js"></script>
+
 </html>
