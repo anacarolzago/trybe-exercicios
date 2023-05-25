@@ -1,0 +1,21 @@
+{
+    "name": "blackjack",
+    "version": "1.0.0",
+    "description": "esse projeto é para aula de front",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "dev": "vite --open"
+    },
+    "keywords": [],
+    "author": "Henrique Jensen",
+    "license": "ISC",
+    "dependencies": {
+      "vite": "^4.3.8"
+    },
+    "devDependencies": {
+      "@trybe/eslint-config-frontend": "^1.11.2",
+      "jest": "^29.5.0"
+    }
+}
