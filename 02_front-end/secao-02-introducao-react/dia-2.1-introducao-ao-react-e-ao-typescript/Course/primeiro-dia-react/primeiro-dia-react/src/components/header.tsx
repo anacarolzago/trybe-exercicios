@@ -4,7 +4,9 @@ function Header() {
   return (
     <header>
       <h1>
-        Olá, {' '} <User />
+        Olá,
+        {' '}
+        <User />
       </h1>
     </header>
   );

@@ -8,7 +8,6 @@ function App() {
       <p>Hello World</p>
       <Footer />
     </div>
-    
   );
 }
 

@@ -1,9 +1,11 @@
-import User from "./user";
+import User from './user';
 
 function Footer() {
   return (
     <footer>
-      Acessando como <User />
+      Acessando como
+      {' '}
+      <User />
     </footer>
   );
 }
