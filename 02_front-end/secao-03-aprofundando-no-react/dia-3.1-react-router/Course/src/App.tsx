@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/home';
+import CoffeeList from './pages/coffee-list';
+import NavBar from './components/nav-bar';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={ <Home /> } />
+        <Route path="/coffees" element={ <CoffeeList /> } />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+
+/*
+O componente Routes tem três funções principais:
+
+1. Agrupar todos os componentes Route;
+2. Ler o caminho da aplicação (como em /coffees);
+3. Buscar qual Route possui o path correspondente ao caminho atual da aplicação;
+
+- Hook useNavigate
+Esse hook nos retorna uma função que, quando executada, direciona a aplicação para uma nova página. É possível, assim, criar validações em formulários, por exemplo, e realizar o redirecionamento apenas após todas as validações serem realizadas.
+Outra funcionalidade do hook useNavigate é realizar o redirecionamento para a “página anterior”. Para isso, execute sua função passando como parâmetro o valor -1.
+
+- NavLink
+Componente bastante utilizando nas aplicações com rotas, ao ser clicado, esse componente irá redirecionar a aplicação para outra página. A grande diferença é que o NavLink é utilizado em menus de navegação.
+
+*/
