@@ -1,10 +1,16 @@
-nav {
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+
+.nav {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-nav a {
+.nav a {
   text-align: center;
   align-self: center;
   justify-self: center;
