@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchCoordinates } from './services';
+import Coordinates from './components/Coordinates';
+import ISSLocation from './components/ISSLocation';
 
 import './App.css';
 
@@ -7,25 +9,45 @@ import './App.css';
 
 // Passo 2 - Importar a função fetchCoordinates criada anteriormente, a fim de que você tenha acesso aos valores retornados pela API e armazene-os no estado coordinates.
 
-type Coordinates = {
-  latitude: number;
+type Location = {
   longitude: number;
+  latitude: number;
 };
 
 function App() {
-  const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
+  const [issLocation, setIssLocation] = useState<Location>({
+    longitude: 0,
+    latitude: 0,
+  });
+  const [loading, setLoading] = useState(true); // Esse estado indicará que a página está carregando as informações. Portanto, sempre que o estado loading for true, a aplicação renderizará a mensagem Loading...:
 
   // O objetivo é que a requisição seja feita apenas uma vez, assim que o componente for renderizado. Portanto, o useEffect deve ter dois parâmetros:
 
   useEffect(() => {
-    async function fetchData() {
-      const data = await fetchCoordinates();
-      setCoordinates({ latitude: data.latitude, longitude: data.longitude });
+    async function setLocation() {
+      const location = await fetchCoordinates();
+      setIssLocation(location);
+      setLoading(false); // Precisa apenas alterar o valor do estado loading para false no momento em que as informações da coordenadas forem armazenadas no estado do componente:
     }
-    fetchData();
+
+    if (loading) {
+      setLocation();
+    }
+
+    const intervalId = setInterval(() => {
+      setLocation();
+    }, 3000);
+
+    return () => { // Essa é a função cleanup
+      clearInterval(intervalId);
+    };
   }, []);
 
   // Está sendo criada a função assíncrona fetchData dentro do useEffect. Essa função vai aguardar o retorno de fetchCoordinates e armazená-lo no estado do componente. Na sequência, execute fetchData.
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <>
@@ -33,12 +55,14 @@ function App() {
 
       { /* Passo 3 - Agora que os valores estão armazenados no estado do componente, basta renderizá-los. Porém, é preciso ter cuidado com um detalhe! Antes de executar o useEffect, o componente é renderizado pela primeira vez. Porém, nesse momento, o valor do estado coordinates ainda é vazio. Portanto, a fim de que a aplicação funcione corretamente, é necessário verificar se o estado já estará preenchido com as informações: */ }
 
-      {coordinates && (
-        <>
-          <h2>{ `Latitude: ${coordinates.latitude}` }</h2>
-          <h2>{ `Longitude: ${coordinates.longitude}` }</h2>
-        </>
-      )}
+      <Coordinates
+        latitude={ issLocation.latitude }
+        longitude={ issLocation.longitude }
+      />
+      <ISSLocation
+        latitude={ issLocation.latitude }
+        longitude={ issLocation.longitude }
+      />
     </>
 
   );
