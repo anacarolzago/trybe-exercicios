@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [imageURL, setImageURL] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchDog = () => {
+    fetch('https://dog.ceo/api/breeds/image/random')
+      .then((res) => res.json())
+      .then((data) => setImageURL(data.message))
+      .then(() => setIsLoading(false));
+  };
+
+  useEffect(() => {
+    fetchDog;
+  }, []);
+
+  // se está carregando, vamos apenas mostrar o Loading
+  if (isLoading) {
+    return <h2>Loading...</h2>;
+  }
+
+  useEffect(() => {
+    if (!isLoading) {
+      localStorage.setItem('imageUrl', imageURL);
+      const dogBreed = imageURL.split('/')[4];
+      alert(dogBreed);
+    }
+  }, [imageURL, isLoading]);
+
+  useEffect(() => {
+    const localStorageUrl = localStorage.getItem('imageUrl');
+    if (localStorageUrl) {
+      setImageURL(localStorageUrl);
+      setIsLoading(false);
+    } else {
+      fetchDog();
+    }
+  }, []);
 
   return (
-    <>
+    <div>
+      <h1>Doguinhos</h1>
+      {/* Adiciona um botão para buscar mais um _doguinho_. */}
+      <button type="button" onClick={ fetchDog }>
+        Novo doguinho!
+
+      </button>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <img src={ imageURL } alt="Dog aleatório" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
