@@ -35,40 +35,39 @@ function App() {
   return (
     <>
       <h1>Gerenciador de senhas</h1>
-      {
-        buttonNewPassword ? (
-          <Button onClickCadastrar={ () => setButtonNewPassword(false) } />
-        ) : (
-          <Form
-            salvarSenha={ salvarSenha }
-            onClickCancelar={ () => setButtonNewPassword(true) }
-          />
-        )
-      }
+      {buttonNewPassword ? (
+        <Button onClickCadastrar={ () => setButtonNewPassword(false) } />
+      ) : (
+        <Form
+          salvarSenha={ salvarSenha }
+          onClickCancelar={ () => setButtonNewPassword(true) }
+        />
+      )}
       <label>
         Esconder senhas
-        <input
-          type="checkbox"
-          onChange={ () => setChecked(!checked) }
-        />
+        <input type="checkbox" onChange={ () => setChecked(!checked) } />
       </label>
       <ul>
-        { senhas.length > 0 ? senhas.map((senha, index) => (
-          <li key={ index }>
-            <a href={ senha.url }>{ senha.name }</a>
-            <p>Login</p>
-            <p>{ senha.login }</p>
-            <p>Senha</p>
-            <p>{ checked ? '******' : senha.password }</p>
-            <button
-              data-testid="remove-btn"
-              onClick={ removeServico }
-              id={ index.toString() }
-            >
-              Remover Serviço
-            </button>
-          </li>
-        )) : <h3>Nenhuma senha cadastrada</h3> }
+        {senhas.length > 0 ? (
+          senhas.map((senha, index) => (
+            <li key={ index }>
+              <a href={ senha.url }>{senha.name}</a>
+              <p>Login</p>
+              <p>{senha.login}</p>
+              <p>Senha</p>
+              <p>{checked ? '******' : senha.password}</p>
+              <button
+                data-testid="remove-btn"
+                onClick={ removeServico }
+                id={ index.toString() }
+              >
+                Remover Serviço
+              </button>
+            </li>
+          ))
+        ) : (
+          <h3>Nenhuma senha cadastrada</h3>
+        )}
       </ul>
     </>
   );
